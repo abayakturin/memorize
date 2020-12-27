@@ -11,7 +11,28 @@ class EmojiMemoryGame {
     private var model: MemoryGame<String> = EmojiMemoryGame.createMemoryGame()
     
     static func createMemoryGame() -> MemoryGame<String> {
-        let emojis = ["👻","🎃","🕷"]
+        
+        var emojis_ = [String]()
+        var emojis = [String]()
+        let emojisSize = Int.random(in: 2..<6)
+        
+        for i in 0x1F601...0x1F64F {
+            let c = String(UnicodeScalar(i) ?? "-")
+            
+            emojis_.append(c)
+        }
+        
+        emojis_.shuffle()
+        
+        for emoji in emojis_{
+            
+            let add = arc4random()
+            
+            if add != 0 && emojis.count < emojisSize {
+                emojis.append(emoji)
+            }
+        }
+        
         return MemoryGame<String>(numberOfPairsOfCards: emojis.count) { pairIndex in
             return emojis[pairIndex]
         }
@@ -20,6 +41,7 @@ class EmojiMemoryGame {
     // MARK: - Access to the model
     
     var cards: Array<MemoryGame<String>.Card> {
+        model.cards.shuffle()
         return model.cards
     }
     // MARK: - Intent(s)
