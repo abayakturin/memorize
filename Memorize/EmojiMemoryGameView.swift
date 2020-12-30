@@ -7,19 +7,33 @@
 
 import SwiftUI
 
-let game = EmojiMemoryGame()
-
 struct EmojiMemoryGameView: View {
     @ObservedObject var viewModel: EmojiMemoryGame
+    @State private var newGame = false
 
     var body: some View {
-        Grid(viewModel.cards) { card in
-            CardView(card: card).onTapGesture{
-                viewModel.choose(card: card)
+        VStack {
+            Grid(viewModel.cards) { card in
+                CardView(card: card).onTapGesture{
+                    self.viewModel.choose(card: card)
+                }
+                .padding(5)
             }
+            .padding()
+            .foregroundColor(.orange)
+            
+            Button(action: {
+                self.newGame.toggle()
+            }, label: {
+                Text("Start new game")
+                .fontWeight(.bold)
+                .font(.title)
+                .padding()
+                .background(Color.orange)
+                .cornerRadius(40)
+                .foregroundColor(.white)
+            })
         }
-        .padding()
-        .foregroundColor(.orange)
     }
 }
 
@@ -39,7 +53,9 @@ struct CardView: View {
                 RoundedRectangle(cornerRadius: cornerRadius).stroke(lineWidth: edgeLineWidth)
                 Text(card.content)
             } else {
-                RoundedRectangle(cornerRadius: cornerRadius).fill()
+                if !card.isMatched {
+                    RoundedRectangle(cornerRadius: cornerRadius).fill()
+                }
             }
         }
         .font(Font.system(size: fontSize(for: size)))
@@ -58,7 +74,7 @@ struct CardView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            EmojiMemoryGameView(viewModel: game)
+            EmojiMemoryGameView(viewModel: EmojiMemoryGame.init())
         }
     }
 }
