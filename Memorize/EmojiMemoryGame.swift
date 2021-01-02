@@ -12,6 +12,8 @@ class EmojiMemoryGame: ObservableObject {
      
     static func createMemoryGame() -> MemoryGame<String> {
         
+        
+        
         var emojis_ = [String]()
         var emojis = [String]()
         let emojisSize = Int.random(in: 2..<6)
@@ -48,5 +50,10 @@ class EmojiMemoryGame: ObservableObject {
     func choose(card: MemoryGame<String>.Card) {
         objectWillChange.send()
         model.choose(card: card)
+    }
+    
+    // MARK: - Start new game
+    func startNewGame() {
+        model = EmojiMemoryGame.createMemoryGame()
     }
 }
