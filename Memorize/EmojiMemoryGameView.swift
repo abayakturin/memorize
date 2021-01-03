@@ -21,11 +21,8 @@ struct EmojiMemoryGameView: View {
                 .foregroundColor(.black)
             
             Text("Score: " + String(self.viewModel.returnScore()))
-                .fontWeight(.bold)
                 .font(.title3)
-                .padding()
                 .background(Color.white)
-                .cornerRadius(50)
                 .foregroundColor(.black)
             
             Grid(viewModel.cards) { card in
