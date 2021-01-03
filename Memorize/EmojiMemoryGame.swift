@@ -8,29 +8,47 @@
 import SwiftUI
 
 class EmojiMemoryGame: ObservableObject {
-    @Published private var model: MemoryGame<String> = EmojiMemoryGame.createMemoryGame()
+    static var themes = [(0, "Smileys",Color.orange),
+                         (1, "Halloween",Color.black),
+                         (2, "Animals",Color.green),
+                         (3, "Hand gestures",Color.yellow),
+                         (4, "Faces",Color.pink),
+                         (5, "Attires",Color.blue)]
+    
+    public static var themeName: String?
+    public static var themeColor: Color?
+    
+    @Published private var model: MemoryGame<String> = EmojiMemoryGame.createMemoryGame(themeIndex: Int.random(in: 0..<6))
      
-    static func createMemoryGame() -> MemoryGame<String> {
-        
-        
+    static func createMemoryGame(themeIndex: Int) -> MemoryGame<String> {
         
         var emojis_ = [String]()
         var emojis = [String]()
         let emojisSize = Int.random(in: 2..<6)
         
-        for i in 0x1F601...0x1F64F {
-            let c = String(UnicodeScalar(i) ?? "-")
-            
-            emojis_.append(c)
+        themeName = themes[themeIndex].1
+        themeColor = themes[themeIndex].2
+        
+        switch themeIndex {
+        case 1:
+            emojis_ = ["👻","💀","🎃","🕷","🕸","🦇"]
+        case 2:
+            emojis_ = ["🐵","🦁","🐹","🐸","🐻","🐮"]
+        case 3:
+            emojis_ = ["🙌","🖐","☝️","💪","🤟","✊"]
+        case 4:
+            emojis_ = ["👦","👳‍♂️","👲","👩‍🦳","🧑‍🦰","👴"]
+        case 5:
+            emojis_ = ["👚","🦺","👖","👗","👔","👘"]
+        default:
+            emojis_ = ["😀","😃","😂","😍","😎","😡"]
         }
         
         emojis_.shuffle()
         
         for emoji in emojis_{
             
-            let add = arc4random()
-            
-            if add != 0 && emojis.count < emojisSize {
+            if emojis.count < emojisSize {
                 emojis.append(emoji)
             }
         }
@@ -54,6 +72,17 @@ class EmojiMemoryGame: ObservableObject {
     
     // MARK: - Start new game
     func startNewGame() {
-        model = EmojiMemoryGame.createMemoryGame()
+        let themeIndex = Int.random(in: 0..<6)
+        model = EmojiMemoryGame.createMemoryGame(themeIndex: themeIndex)
+    }
+    
+    // MARK: - Get the theme name
+    func getThemeName() -> String {
+        return EmojiMemoryGame.themeName ?? "Something went wrong"
+    }
+    
+    // MARK: - Get the theme color
+    func getThemeColor() -> Color {
+        return EmojiMemoryGame.themeColor ?? Color.white
     }
 }
