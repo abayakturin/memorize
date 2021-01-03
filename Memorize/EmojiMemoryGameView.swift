@@ -12,7 +12,15 @@ struct EmojiMemoryGameView: View {
     
     var body: some View {
         VStack {
-            Text(self.viewModel.getThemeName())
+            Text("Theme: " + self.viewModel.getThemeName())
+                .fontWeight(.bold)
+                .font(.title3)
+                .padding()
+                .background(Color.white)
+                .cornerRadius(50)
+                .foregroundColor(.black)
+            
+            Text("Score: " + String(self.viewModel.returnScore()))
                 .fontWeight(.bold)
                 .font(.title3)
                 .padding()

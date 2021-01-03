@@ -67,7 +67,7 @@ class EmojiMemoryGame: ObservableObject {
     
     func choose(card: MemoryGame<String>.Card) {
         objectWillChange.send()
-        model.choose(card: card)
+        model.choose(card: card, score: 0)
     }
     
     // MARK: - Start new game
@@ -84,5 +84,10 @@ class EmojiMemoryGame: ObservableObject {
     // MARK: - Get the theme color
     func getThemeColor() -> Color {
         return EmojiMemoryGame.themeColor ?? Color.white
+    }
+    
+    // MARK: - Return the score
+    func returnScore() -> Int {
+        return model.returnScore()
     }
 }
