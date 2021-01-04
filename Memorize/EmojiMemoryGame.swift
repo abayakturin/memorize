@@ -8,7 +8,7 @@
 import SwiftUI
 
 class EmojiMemoryGame: ObservableObject {
-    static var themes = [(0, "Smileys",Color.orange),
+    static var themes = [(0, "Smileys", Color.yellow),
                          (1, "Halloween",Color.black),
                          (2, "Animals",Color.green),
                          (3, "Hand gestures",Color.yellow),
@@ -82,8 +82,10 @@ class EmojiMemoryGame: ObservableObject {
     }
     
     // MARK: - Get the theme color
-    func getThemeColor() -> Color {
-        return EmojiMemoryGame.themeColor ?? Color.white
+    func getThemeColor() -> (color: Color, gcolor: AngularGradient?)   {
+        let colors = Gradient(colors: [.red, .yellow, .green, .blue, .purple, .red])
+        let conic = AngularGradient(gradient: colors, center: .center)
+        return (EmojiMemoryGame.themeColor ?? Color.white, conic)
     }
     
     // MARK: - Return the score
