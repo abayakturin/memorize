@@ -8,6 +8,9 @@
 import Foundation
 
 struct MemoryGame<CardContent> where CardContent: Equatable {
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    private var counter = 0
+    
     var cards: Array<Card>
     private(set) var score: Int = 0
     
@@ -27,9 +30,9 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
                 if cards[chosenIndex].content == cards[potentialMatchIndex].content {
                     cards[chosenIndex].isMatched = true
                     cards[potentialMatchIndex].isMatched = true
-                    self.score += 2
+                    self.score += max(10 - counter, 1) * 2
                 } else {
-                    self.score -= 1
+                    self.score -= max(10 - counter, 1) * 1
                 }
                 self.cards[chosenIndex].isFaceUp = true
             } else {

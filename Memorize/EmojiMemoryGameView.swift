@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+let game = EmojiMemoryGame()
+
 struct EmojiMemoryGameView: View {
     @ObservedObject var viewModel: EmojiMemoryGame
     
@@ -32,7 +34,7 @@ struct EmojiMemoryGameView: View {
                 .padding(5)
             }
             .padding()
-            .foregroundColor(viewModel.getThemeColor().color)
+            .foregroundColor(game.getThemeColor().color)
             
             Button(action: {
                 self.viewModel.startNewGame()
@@ -41,9 +43,9 @@ struct EmojiMemoryGameView: View {
                 .fontWeight(.bold)
                 .font(.title)
                 .padding()
-                .background(viewModel.getThemeColor().color)
+                .background(game.getThemeColor().color)
                 .cornerRadius(40)
-                .foregroundColor(.white)
+                .foregroundColor(Color.white)
             })
         }
     }
@@ -62,7 +64,7 @@ struct CardView: View {
     private func body(for size: CGSize) ->  some View {
         if card.isFaceUp || !card.isMatched {
             ZStack {
-                Pie(startAngle: Angle.degrees(-90), endAngle: Angle.degrees(20), clockWise: true).padding(5).opacity(0.4    )
+                Pie(startAngle: Angle.degrees(-90), endAngle: Angle.degrees(20), clockWise: true).padding(5).opacity(0.4)
                 Text(card.content)
                     .font(Font.system(size: fontSize(for: size)))
             }
@@ -78,7 +80,7 @@ struct CardView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        return EmojiMemoryGameView(viewModel: EmojiMemoryGame.init())
-        
+//        return EmojiMemoryGameView(viewModel: EmojiMemoryGame.init())
+        return EmojiMemoryGameView(viewModel: game)
     }
 }
