@@ -82,9 +82,9 @@ class EmojiMemoryGame: ObservableObject {
     }
     
     // MARK: - Get the theme color
-    func getThemeColor() -> (color: Color, gcolor: AngularGradient?)   {
-        let colors = Gradient(colors: [.red, .yellow, .green, .blue, .purple, .red])
-        let conic = AngularGradient(gradient: colors, center: .center)
+    func getThemeColor() -> (color: Color, gcolor: LinearGradient?)   {
+        let colors = Gradient(colors: [.red, .orange, .yellow, .green, .blue, .purple])
+        let conic = LinearGradient(gradient: colors, startPoint: .top, endPoint: .bottom)
         return (EmojiMemoryGame.themeColor ?? Color.white, conic)
     }
     

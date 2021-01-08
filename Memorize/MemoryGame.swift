@@ -27,9 +27,9 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
                 if cards[chosenIndex].content == cards[potentialMatchIndex].content {
                     cards[chosenIndex].isMatched = true
                     cards[potentialMatchIndex].isMatched = true
-                    self.score += 2
+                    self.score += max(10 - Int(cards[chosenIndex].pastFaceUpTime), 1) * 2
                 } else {
-                    self.score -= 1
+                    self.score -= max(10 - Int(cards[chosenIndex].pastFaceUpTime), 1) * 1
                 }
                 self.cards[chosenIndex].isFaceUp = true
             } else {
@@ -58,6 +58,7 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
                 }
             }
         }
+                
         var isMatched: Bool = false {
             didSet {
                 stopUsingBonusTime()

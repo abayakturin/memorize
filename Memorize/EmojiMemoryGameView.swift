@@ -43,13 +43,23 @@ struct EmojiMemoryGameView: View {
                     self.viewModel.startNewGame()
                 }
             }, label: {
-                Text("Start new game")
-                .fontWeight(.bold)
-                .font(.title)
-                .padding()
-                .background(game.getThemeColor().color)
-                .cornerRadius(40)
-                .foregroundColor(Color.white)
+                if(game.getThemeName() == "Smileys"){
+                    Text("Start new game")
+                    .fontWeight(.bold)
+                    .font(.title)
+                    .padding()
+                    .background(game.getThemeColor().gcolor)
+                    .cornerRadius(40)
+                    .foregroundColor(Color.white)
+                } else {
+                    Text("Start new game")
+                    .fontWeight(.bold)
+                    .font(.title)
+                    .padding()
+                    .background(game.getThemeColor().color)
+                    .cornerRadius(40)
+                    .foregroundColor(Color.white)
+                }
             })
         }
     }
@@ -96,6 +106,13 @@ struct CardView: View {
             }
             .cardify(isFaceUp: card.isFaceUp)
             .transition(AnyTransition.scale)
+        }
+        
+        if game.getThemeName() == "Smileys"{
+            if !card.isFaceUp && !card.isMatched {
+                let colors = Gradient(colors: [.red, .orange, .yellow, .green, .blue, .purple])
+                LinearGradient(gradient: colors, startPoint: .top, endPoint: .bottom)
+            } 
         }
     }
     
