@@ -1,4 +1,4 @@
 # memorize
 A simple flashcard game built for iOS. Click on the picture for demonstration.
 
-[![Demo width="300"](https://github.com/abayakturin/memorize/blob/main/2021-01-07%2022.19.42.jpg)](https://youtu.be/1Jtco-BCGG0)
+[![Demo width="100"](https://github.com/abayakturin/memorize/blob/main/2021-01-07%2022.19.42.jpg)](https://youtu.be/1Jtco-BCGG0)
