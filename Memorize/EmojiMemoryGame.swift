@@ -41,7 +41,7 @@ class EmojiMemoryGame: ObservableObject {
         case 5:
             emojis_ = ["👚","🦺","👖","👗","👔","👘"]
         default:
-            emojis_ = ["😀","😃","😂","😍","😎","😡"]
+            emojis_ = ["😀","😃","😂","😍","🥸","😡"]
         }
         
         emojis_.shuffle()
