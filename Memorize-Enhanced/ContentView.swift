@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Memorize-enhanced!")
+        Text("Memorize Enhanced Edition!")
             .padding()
     }
 }
