@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:/Users/adam_ak/Desktop/iOS Projects/Memorize/Memorize/ContentView.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/adam_ak/Desktop/iOS Projects/Memorize/Memorize/EmojiMemoryGame.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/adam_ak/Desktop/iOS Projects/Memorize/Memorize/MemorizeApp.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/adam_ak/Desktop/iOS Projects/Memorize/Memorize/MemoryGame.swift">
+   </FileRef>
+   <FileRef
+      location = "self:">
+   </FileRef>
+</Workspace>
