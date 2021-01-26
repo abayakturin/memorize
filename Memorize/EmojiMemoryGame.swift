@@ -21,8 +21,6 @@ class EmojiMemoryGame: ObservableObject {
     public static var themeColor: Color?
     
     @Published private var model: MemoryGame<String> = EmojiMemoryGame.createMemoryGame(themeIndex: Int.random(in: 0..<6))
-    
-    static let emojis: String = "🐹🌵🌹🧄⚽️🥨"
      
     static func createMemoryGame(themeIndex: Int) -> MemoryGame<String> {
         
