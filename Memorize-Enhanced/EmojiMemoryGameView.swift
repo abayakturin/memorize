@@ -16,7 +16,7 @@ struct EmojiMemoryGameView: View {
     var body: some View {
         VStack {
             HStack {
-            Text("Enhanced Edition")
+            Text("Enhanced Edition!")
                 .italic()
                 .font(.title)
                 .background(Color.white)
